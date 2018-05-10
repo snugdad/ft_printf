@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 09:54:52 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/04 16:22:28 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 15:44:30 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int					ft_str_is_printable(char *str);
 int					ft_str_is_numeric(char *str);
 int					ft_str_is_lowercase(char *str);
 int					ft_str_is_alpha(char *str);
+char 				*ft_strfill(char *s, char c, size_t n);
 void				*ft_realloc(void *ptr, size_t src_size, size_t new_size);
 void				*ft_recalloc(void *ptr, size_t src_size, size_t new_size);
 void				ft_putstr(char const *str);

@@ -6,13 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 14:29:51 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/02 17:56:27 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 16:05:00 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
-
-
 
 char	*ft_null_str(t_info *inf)
 {
@@ -49,7 +47,7 @@ void	handle_wstring(t_vector *vector, t_info *pfinfo, va_list ap)
 	ft_vector_append(vector, str);
 	free(str);
 }
-	
+
 void	handle_strings(t_vector *vector, t_info *inf, va_list ap)
 {
 	char *ctemp;

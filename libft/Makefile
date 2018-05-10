@@ -6,7 +6,7 @@
 #    By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/21 11:46:19 by egoodale          #+#    #+#              #
-#    Updated: 2018/05/04 14:55:18 by egoodale         ###   ########.fr        #
+#    Updated: 2018/05/10 15:34:34 by egoodale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ FILES 	= ft_wordcount.c \
 		  ft_strclr.c \
 		  ft_strchr.c \
 		  ft_strcat.c \
+		  ft_strfill.c \
 		  ft_str_is_uppercase.c \
 		  ft_str_is_printable.c \
 		  ft_str_is_numeric.c \

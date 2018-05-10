@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 19:20:46 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/02 18:00:48 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/09 18:15:38 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    ft_prec_nums(t_info *inf, char **s)
     inf->prec = inf->prec == -1 ? 1 : inf->prec;
     if((size_t)inf->prec < ft_strlen(*s))
         return ;
-    sign = (!ft_isdigit((*s)[0]) && *inf->spec == 'd') ? (*s)[0] : 0;
+    sign = (!ft_isdigit((*s)[0]) && inf->spec == 'd') ? (*s)[0] : 0;
     if (sign)
         (*s)++;
     new = ft_strnew(inf->prec + !!sign);
@@ -73,7 +73,7 @@ void    ft_right_just(t_info *inf, char **s, char *new)
     sign = 0;
     if (inf->flags & ZER)
     {
-        sign = (!ft_isdigit((*s)[0]) && *inf->spec == 'd') ? (*s)[0] : 0;
+        sign = (!ft_isdigit((*s)[0]) && inf->spec == 'd') ? (*s)[0] : 0;
         ft_memset(new, '0', inf->width - ft_strlen(*s) + !!sign);
         if (sign)
         {

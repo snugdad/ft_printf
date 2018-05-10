@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_strfill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/21 21:44:55 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/09 17:02:18 by egoodale         ###   ########.fr       */
+/*   Created: 2018/05/10 15:25:20 by egoodale          #+#    #+#             */
+/*   Updated: 2018/05/10 15:43:46 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strndup(const char *src, size_t len)
+char       *ft_strfill(char *s, char c, size_t n)
 {
-	char	*dst;
-	char	*cdst;
-
-	if (!(dst = ft_strnew(len + 1)))
-		return (0);
-	cdst = dst;
-	len++;
-	while (--len > 0)
-		*dst++ = *src++;
-	*dst = '\0';
-	return (cdst);
+    size_t i;
+    
+    if (!s)
+        return (NULL);
+    i = 0;
+    while(i < n)
+    {
+        s[i] = c;
+        i++;
+    }
+    return (s);
 }

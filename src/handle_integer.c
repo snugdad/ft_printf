@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 16:30:48 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/04 18:13:56 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/09 18:12:52 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	handle_integer(t_vector *vector, t_info *inf, va_list ap)
 	intmax_t nb;
 	char *s;
 
-	inf->length = *inf->spec == 'D' ? l : inf->length;
-	*inf->spec = *inf->spec == 'i' || *inf->spec == 'D' ? 'd' : *inf->spec;
+	inf->length = inf->spec == 'D' ? l : inf->length;
+	inf->spec = inf->spec == 'i' || inf->spec == 'D' ? 'd' : inf->spec;
 	nb = get_len(inf->length, ap);
 	s =	ft_imaxtoa(nb);
 	if(inf->prec != -1 && inf->flags & ZER)

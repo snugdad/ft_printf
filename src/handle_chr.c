@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 20:46:43 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/02 21:12:36 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/09 18:11:30 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void    handle_chr(t_vector *vector, t_info *inf, va_list ap)
     char *s;
     int null;
 
-    if(*inf->spec == 'C' || inf->length == l)
+    if(inf->spec == 'C' || inf->length == l)
     {
         null = ft_handle_wchar(&s, ap);
         s[0] = null ? null : s[0];
@@ -56,6 +56,9 @@ void    handle_chr(t_vector *vector, t_info *inf, va_list ap)
         s[0] = c + null;
     }
     ft_pad_handle(inf, &s);
-    null ? ft_null_chr(vector, s) : ft_vector_append(vector, s);
+    if  (null)
+        ft_null_chr(vector, s);
+    else
+        ft_vector_append(vector, s);
     free(s);
 }

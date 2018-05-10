@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:04:21 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/02 14:05:27 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 12:36:06 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ void   get_lngth(char **format, t_info *inf)
 				i = 1;
 		}
 		if (i == 2)
-			i = *(*format + (inf->rc + 1)) == 'l' ? 3 : 2;
-		inf->length = i > inf->length ? i : inf->length; 
-		++inf->rc;
+			i = *(*format + (inf->rc + 1)) == 'l' ? ll : l;
+		inf->length = MAX(i, inf->length);
+		inf->rc = inf->length == 3 ? inf->rc + 1 : inf->rc;
+		inf->rc++;
 	}
 }
 

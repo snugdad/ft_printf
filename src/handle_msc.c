@@ -6,11 +6,12 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 17:51:02 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/04 18:17:15 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 15:07:17 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
+#include "../pf_colors.h"
 
 intmax_t	*ft_printf_n_len(t_info *inf, va_list ap)
 {
@@ -46,8 +47,26 @@ void    handle_percent(t_vector *vector, t_info *inf, va_list ap)
 
 	(void)ap;
 	str = ft_strnew(1);
-	*str = *inf->spec;
+	*str = inf->spec;
 	ft_pad_handle(inf, &str);
 	ft_vector_append(vector, str);
 	free(str);
+}
+
+int		handle_color(t_vector *vector, t_info *inf, char **format)
+{
+	int i;
+
+	i = -1;
+	ft_vector_nappend(vector, *format, inf->rc);
+	*format += inf->rc;
+	while(++i < 33)
+		if (ft_strnstr(*format, g_colortab[i].kw_name, ft_strlen(g_colortab[i].kw_name)))
+		{
+			ft_vector_append(vector, g_colortab[i].code);
+			*format += ft_strlen(g_colortab[i].kw_name);
+			inf->rc = 0;
+			return (1);
+		}
+	return (0);
 }

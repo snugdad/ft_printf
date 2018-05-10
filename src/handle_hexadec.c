@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 13:40:49 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/04 18:16:42 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/09 18:12:14 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ void		ft_handle_alt(t_info *inf, char **s)
 {
 	char *new;
 
-	if (!(ISXO(inf->spec) || *inf->spec == 'p' || *inf->spec == 'b'))
+	if (!(ISXO(inf->spec) || inf->spec == 'p' || inf->spec == 'b'))
 		return ;
 	new = ft_strdup(*s);
-	if (*inf->spec == 'p')
+	if (inf->spec == 'p')
 		ft_insert_str(&new, "0x");
 	else if (inf->flags & HTG)
 	{
-		if (*inf->spec == 'b' && ft_strcmp("0", *s) &&
+		if (inf->spec == 'b' && ft_strcmp("0", *s) &&
 														ft_strcmp("\0", *s))
 			ft_insert_str(&new, "0b");
-		else if (IS_X(*inf->spec) && ft_strcmp("0", *s) &&
+		else if (IS_X(inf->spec) && ft_strcmp("0", *s) &&
 														ft_strcmp("\0", *s))
 			ft_insert_str(&new, "0x");
-		else if (IS_O(*inf->spec) && **s != '0')
+		else if (IS_O(inf->spec) && **s != '0')
 			ft_insert_str(&new, "0");
 	}
 	free(*s);
@@ -65,22 +65,22 @@ void		ft_handle_xou(char **s, t_info *inf)
 	if (inf->prec == 0 && !ft_strcmp(*s, "0"))
 		**s = '\0';
 	ft_prec_nums(inf, s);
-	if (inf->flags & ZER && *inf->spec == 'p')
+	if (inf->flags & ZER && inf->spec == 'p')
 	{
 		inf->width = MAX(inf->width - 2, 0);
 		ft_pad_handle(inf, s);
 	}
-	else if (inf->flags & ZER && inf->flags & HTG && (IS_X(*inf->spec)
-														|| *inf->spec == 'b'))
+	else if (inf->flags & ZER && inf->flags & HTG && (IS_X(inf->spec)
+														|| inf->spec == 'b'))
 	{
 		inf->width = MAX(inf->width - 2, 0);
 		ft_pad_handle(inf, s);
 	}
 	ft_handle_alt(inf, s);
-	if (!(inf->flags & ZER && inf->flags & HTG && (IS_X(*inf->spec)
-								|| *inf->spec == 'p' || *inf->spec == 'b')))
+	if (!(inf->flags & ZER && inf->flags & HTG && (IS_X(inf->spec)
+								|| inf->spec == 'p' || inf->spec == 'b')))
 		ft_pad_handle(inf, s);
-    if(*inf->spec == 'X')
+    if(inf->spec == 'X')
 	    ft_str_toupper(*s);
 }
 
@@ -89,11 +89,11 @@ void    handle_hexadec(t_vector *vector, t_info *inf, va_list ap)
 	uintmax_t	hex;
 	char		*s;
 
-	if (*inf->spec == 'p')
+	if (inf->spec == 'p')
 		inf->length = j;
 	hex = ft_xou_len(inf->length, ap);
-	s = ft_uimaxtoa_base(hex, 16, "0123456789abcdef");
-	if (*inf->spec == 'p' && inf->flags & ZER && inf->pset)
+	s = ft_uimaxtoa_base(hex, 16, BASE_16);
+	if (inf->spec == 'p' && inf->flags & ZER && inf->pset)
 		inf->flags ^= ZER;
 	ft_handle_xou(&s, inf);
 	ft_vector_append(vector, s);
@@ -105,23 +105,24 @@ void		handle_unsigned(t_vector *vector, t_info *inf, va_list ap)
 	uintmax_t	uns;
 	char		*str;
 
-	if (*inf->spec == 'U')
+	if (inf->spec == 'U')
 		inf->length = l;
 	uns = ft_xou_len(inf->length, ap);
-	str = ft_uimaxtoa_base(uns, 10, "0123456789");
+	str = ft_uimaxtoa_base(uns, 10, BASE_10);
 	ft_handle_xou(&str, inf);
 	ft_vector_append(vector, str);
 	free(str);
 }
+
 void		handle_octal(t_vector *vector, t_info *inf, va_list ap)
 {
 	uintmax_t	oct;
 	char		*s;
 
-	if (*inf->spec == 'O')
+	if (inf->spec == 'O')
 		inf->length = l;
 	oct = ft_xou_len(inf->length, ap);
-	s = ft_uimaxtoa_base(oct, 8, "01234567");
+	s = ft_uimaxtoa_base(oct, 8, BASE_8);
 	ft_handle_xou(&s, inf);
 	ft_vector_append(vector, s);
 	free(s);
@@ -134,7 +135,7 @@ void    handle_bin(t_vector *vector, t_info *inf, va_list ap)
 	char		*s;
 
 	binary = va_arg(ap, unsigned long long);
-	s = ft_uimaxtoa_base(binary, 2, "01");
+	s = ft_uimaxtoa_base(binary, 2, BASE_2);
 	ft_handle_xou(&s, inf);
 	ft_vector_append(vector, s);
 	free(s);

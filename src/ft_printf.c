@@ -6,12 +6,20 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:45:23 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/02 15:04:00 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 16:23:08 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 #include "../ft_translate.h"
+
+int  valid_arg(char c)
+{
+    return(c == 'd' || c == 'i' || c == 'D' || c == 's' ||
+           c == 'S' || c == 'p' || c == 'x' || c == 'X' ||
+           c == 'o' || c == 'O' || c == 'b' || c == 'n' ||
+           c == '%');
+}
 
 char *get_next_arg(t_vector *vector, t_info *inf, char **format, va_list ap) 
 {
@@ -26,24 +34,23 @@ char *get_next_arg(t_vector *vector, t_info *inf, char **format, va_list ap)
             get_width(format, inf, ap);
             get_preci(format, inf, ap);
             get_lngth(format, inf);
-            if (!*(*format + inf->rc)) //vector nappend ?
-                return (NULL);
             return(*format + inf->rc);
         }
-        inf->rc++;
+        if(*(*format + inf->rc) == '{' && !handle_color(vector, inf, format))
+            inf->rc++;
+        else
+            inf->rc++;
     }
     ft_vector_nappend(vector, *format, inf->rc);
     return (NULL);
 }
 
-void init_info(t_info *inf, const char *format, int spec_init)
+void init_info(t_info *inf)
 {
     inf->flags = 0;
     inf->length = -1;
     inf->width = 0;
     inf->prec = -1;
-    if(spec_init)
-        inf->spec = ft_strdup((char *)format);
     inf->pset = 0;
     inf->rc = 0;
 }
@@ -54,19 +61,22 @@ int  parse_f_string(char **ret, const char *format, va_list ap)
     t_vector vector;
     t_info inf;
 
-    init_info(&inf, format, 1);
-    if (ft_vector_init(&vector, ft_strlen(format) + 50) == FAILED)
-        return (FAILED);
-    while ((inf.spec = get_next_arg(&vector, &inf, &inf.spec, ap)))
+    init_info(&inf);
+    if (ft_vector_init(&vector, ft_strlen(format) + 50) == -1)
+        return (-1);
+    while ((format = get_next_arg(&vector, &inf, (char **)&format, ap)))
     {
         i = -1;
+        inf.spec = *format;
         while (++i < MAX_FORMATS)
-         if (g_trans_list[i].type[0] == *inf.spec)
-         {
-             g_trans_list[i].printf(&vector, &inf, ap);
-             init_info(&inf, format, 0);
-             inf.spec++;
-         }
+            if (g_trans_list[i].type[0] == inf.spec)
+            {
+                g_trans_list[i].printf(&vector, &inf, ap);
+                format++;
+            }
+        if(!valid_arg(inf.spec) && inf.width)
+            ft_vector_append(&vector, ft_strfill(ft_strnew(inf.width - 1), ' ', inf.width - 1));
+        init_info(&inf);
     }
     *ret = ft_strndup(vector.data, vector.len);
     ft_vector_free(&vector);
@@ -87,17 +97,19 @@ int ft_vprintf(char **ret, const char *format, va_list ap)
     }
     return (parse_f_string(ret, format, ap));
 }
-void ft_printf(char *format, ...)
+int ft_printf(char *format, ...)
 {
     va_list ap;
     int len;
     char *ret;
 
     if (!format || !*format)
-        return ;
+        return (0);
     va_start(ap, format);
     len = ft_vprintf(&ret, format, ap);
     write(1, ret, len);
+    free(ret);
+    ret = NULL;
     va_end(ap);
-    return;
+    return (len);
 }
