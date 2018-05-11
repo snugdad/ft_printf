@@ -6,7 +6,7 @@
 #    By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/26 19:11:26 by egoodale          #+#    #+#              #
-#    Updated: 2018/05/10 16:59:18 by egoodale         ###   ########.fr        #
+#    Updated: 2018/05/10 17:04:27 by egoodale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,8 +103,7 @@ FT_COMPILED =		ft_wordcount.o\
 		  ft_wstr_to_str.o\
 		  ft_uimaxtoa_base.o\
 		  ft_str_toupper.o\
-		  ft_str_fill.o\
-
+		  ft_strfill.o\
 
 PRINTF_COMPILED =	ft_printf.o \
                     check_mods.o\
