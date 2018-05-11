@@ -6,14 +6,14 @@
 #    By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/26 19:11:26 by egoodale          #+#    #+#              #
-#    Updated: 2018/05/10 19:43:02 by egoodale         ###   ########.fr        #
+#    Updated: 2018/05/10 20:11:51 by egoodale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a 
 
 CC =				gcc
-FLAGS =				-Wall -Werror -Wextra
+FLAGS =				-Wall -Werror -Wextra -g
 
 FT_SRC_DIR =		./libft
 PRINTF_SRC_DIR =	./src
