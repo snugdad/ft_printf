@@ -6,13 +6,13 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:04:21 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 12:36:06 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 18:59:20 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../include/ft_printf.h"
 
-void   get_flags(char **format, t_info *inf)
+void   get_flags(char **format, t_arg *inf)
 {
 	const char	flags[] = "-+ 0#";
 	size_t		i;
@@ -27,7 +27,7 @@ void   get_flags(char **format, t_info *inf)
 	}
 }
 
-void   get_lngth(char **format, t_info *inf)
+void   get_lngth(char **format, t_arg *inf)
 {
 	const char	lengths[] = "hhlljz";
 	int			i;
@@ -51,7 +51,7 @@ void   get_lngth(char **format, t_info *inf)
 	}
 }
 
-void	get_width(char **format, t_info *inf, va_list ap)
+void	get_width(char **format, t_arg *inf, va_list ap)
 {
 	int res;
 
@@ -61,8 +61,8 @@ void	get_width(char **format, t_info *inf, va_list ap)
 		inf->width = va_arg(ap, int);
 		if (inf->width < 0)
 		{
-			if (!(inf->flags & LFT))
-				inf->flags ^= LFT;
+			if (!(inf->flags & L))
+				inf->flags ^= L;
 			inf->width = -inf->width;
 		}
 		++inf->rc;
@@ -78,7 +78,7 @@ void	get_width(char **format, t_info *inf, va_list ap)
 	inf->width = res;
 }
 
-void	get_preci(char **format, t_info *inf, va_list ap)
+void	get_preci(char **format, t_arg *inf, va_list ap)
 {
 	int res;
 

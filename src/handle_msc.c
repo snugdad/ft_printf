@@ -6,14 +6,14 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 17:51:02 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 15:07:17 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 19:10:47 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
-#include "../pf_colors.h"
+#include "../include/ft_printf.h"
+#include "../include/pf_colors.h"
 
-intmax_t	*ft_printf_n_len(t_info *inf, va_list ap)
+intmax_t	*ft_printf_n_len(t_arg *inf, va_list ap)
 {
 	if (inf->length == hh)
 		return ((intmax_t *)va_arg(ap, signed char *));
@@ -30,7 +30,7 @@ intmax_t	*ft_printf_n_len(t_info *inf, va_list ap)
 	return ((intmax_t *)va_arg(ap, int *));
 }
 
-void    handle_pos(t_vector *vector, t_info *inf, va_list ap)
+void    handle_pos(t_vector *vector, t_arg *inf, va_list ap)
 {
 	intmax_t	*i;
 	int			tmp;
@@ -41,19 +41,19 @@ void    handle_pos(t_vector *vector, t_info *inf, va_list ap)
 }
 
 
-void    handle_percent(t_vector *vector, t_info *inf, va_list ap)
+void    handle_percent(t_vector *vector, t_arg *inf, va_list ap)
 {
 	char *str;
 
 	(void)ap;
 	str = ft_strnew(1);
 	*str = inf->spec;
-	ft_pad_handle(inf, &str);
+	add_padding(inf, &str);
 	ft_vector_append(vector, str);
 	free(str);
 }
 
-int		handle_color(t_vector *vector, t_info *inf, char **format)
+int		handle_color(t_vector *vector, t_arg *inf, char **format)
 {
 	int i;
 

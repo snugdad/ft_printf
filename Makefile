@@ -6,7 +6,7 @@
 #    By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/26 19:11:26 by egoodale          #+#    #+#              #
-#    Updated: 2018/05/10 17:04:27 by egoodale         ###   ########.fr        #
+#    Updated: 2018/05/10 19:43:02 by egoodale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,14 +105,16 @@ FT_COMPILED =		ft_wordcount.o\
 		  ft_str_toupper.o\
 		  ft_strfill.o\
 
-PRINTF_COMPILED =	ft_printf.o \
-                    check_mods.o\
-                    handle_integer.o\
+PRINTF_COMPILED =	check_mods.o\
+					ft_printf.o \
                     handle_chr.o\
-                    handle_strings.o\
-					pf_handle.o\
 					handle_msc.o\
-					handle_hexadec.o\
+					handle_signed.o \
+                    handle_strings.o\
+					handle_unsigned.o\
+					parse_args.o\
+					parse_precision.o\
+					parse_unsigned.o\
                     
 COMPILED =			$(FT_COMPILED) $(PRINTF_COMPILED)
 

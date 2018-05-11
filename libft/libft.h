@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 09:54:52 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 15:44:30 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 17:56:39 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@
 #define WHITE_S(x) (x == ' ' || x == '\t' || x == '\n' ? 1 : 0)
 #define W_PC(x) (x == '\v' || x == '\r' || x == '\f' ? 1 : 0)
 #define ABS_V(x) (x < 0 ? -x : x)
-#define FAILED -1
 
-typedef enum e_urebool
+#define BASE_16 "0123456789abcdef"
+#define BASE_10 "0123456789"
+#define BASE_8 "01234567"
+#define BASE_2 "01"
+
+typedef enum		e_bool
 {
-	FAILURE,
-	SUCCESS
-}			t_urebool;
+	false,
+	true
+} 					t_bool;
 
 typedef struct		s_list
 {

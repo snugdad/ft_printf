@@ -6,13 +6,13 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 14:29:51 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 16:05:00 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 19:39:30 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../include/ft_printf.h"
 
-char	*ft_null_str(t_info *inf)
+char	*ft_null_str(t_arg *inf)
 {
 	char *temp;
 
@@ -28,30 +28,31 @@ char	*ft_null_str(t_info *inf)
 		temp = ft_strdup("");
 	return (temp);
 }
-void	handle_wstring(t_vector *vector, t_info *pfinfo, va_list ap)
+
+void	handle_wstring(t_vector *vector, t_arg *pfinfo, va_list ap)
 {
 	wchar_t *ctemp;
-	char	*str;
+	char	*s;
 
 	ctemp = va_arg(ap, wchar_t *);
 	if (!ctemp)
-		str = ft_null_str(pfinfo);
+		s = ft_null_str(pfinfo);
 	else
 	{
 		ctemp = ft_wstrdup(ctemp);
-		ft_prec_wstr(pfinfo, ctemp);
-		str = ft_wstr_to_str(ctemp);
+		add_prec_wstr(pfinfo, ctemp);
+		s = ft_wstr_to_str(ctemp);
 		free(ctemp);
 	}
-	ft_pad_handle(pfinfo, &str);
-	ft_vector_append(vector, str);
-	free(str);
+	add_padding(pfinfo, &s);
+	ft_vector_append(vector, s);
+	free(s);
 }
 
-void	handle_strings(t_vector *vector, t_info *inf, va_list ap)
+void	handle_strings(t_vector *vector, t_arg *inf, va_list ap)
 {
 	char *ctemp;
-	char *str;
+	char *s;
 
 	if (inf->length == l)
 	{
@@ -59,12 +60,10 @@ void	handle_strings(t_vector *vector, t_info *inf, va_list ap)
 		return ;
 	}
 	ctemp = va_arg(ap, char *);
-	if (!ctemp)
-		str = ft_null_str(inf);
-	else
-		str = ft_strdup(ctemp);
-	ft_prec_handle(inf, &str);
-	ft_pad_handle(inf, &str);
-	ft_vector_append(vector, str);
-	free(str);
+	s = !ctemp ? ft_null_str(inf) : ft_strdup(ctemp);
+	if(!(inf->prec == -1 || (int)ft_strlen(s) <= inf->prec))
+		s[inf->prec] = '\0';
+	add_padding(inf, &s);
+	ft_vector_append(vector, s);
+	free(s);
 }

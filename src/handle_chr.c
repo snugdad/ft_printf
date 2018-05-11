@@ -6,11 +6,11 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 20:46:43 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/09 18:11:30 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 19:07:15 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "../include/ft_printf.h"
 
 void    ft_null_chr(t_vector *vector, char *s)
 {
@@ -37,7 +37,7 @@ int     ft_handle_wchar(char **s, va_list ap)
 
 }
 
-void    handle_chr(t_vector *vector, t_info *inf, va_list ap)
+void    handle_chr(t_vector *vector, t_arg *inf, va_list ap)
 {
     char c;
     char *s;
@@ -55,7 +55,7 @@ void    handle_chr(t_vector *vector, t_info *inf, va_list ap)
         null = !c ? 1 : 0;
         s[0] = c + null;
     }
-    ft_pad_handle(inf, &s);
+    add_padding(inf, &s);
     if  (null)
         ft_null_chr(vector, s);
     else

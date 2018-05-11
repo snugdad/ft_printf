@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 14:52:46 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/01 14:55:55 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/10 17:55:50 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 int		ft_vector_init(t_vector *vector, size_t init_cap)
 {
 	if (!vector || !init_cap)
-		return (FAILED);
+		return (-1);
 	vector->len = 0;
 	vector->cap = init_cap;
 	if ((vector->data = ft_memalloc(sizeof(char) * vector->cap)) == NULL)
-		return (FAILED);
-	return (SUCCESS);
+		return (-1);
+	return (0);
 }
 
 void	ft_vector_append(t_vector *vector, char *newdata)
