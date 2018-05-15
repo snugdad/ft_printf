@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 16:02:21 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/02 16:05:07 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 14:21:27 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_str_to_unicode(wchar_t c, char *s)
 {
 	if (c < (MB_CUR_MAX == 1 ? 0xFF : 0x7F))
-				s[0] = (unsigned char)c;
+		s[0] = (unsigned char)c;
 	else if (c < (1 << 11))
 	{
 		s[0] = (unsigned char)((c >> 6) | 0xC0);

@@ -6,17 +6,17 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 18:55:29 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/01 18:56:27 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 14:12:12 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_insert_str(char **s1, char *s2)
+void	ft_insert_str(char **s1, char *s2)
 {
-	char *str;
-	char *s1cpy;
-	char *new;
+	char	*str;
+	char	*s1cpy;
+	char	*new;
 
 	if (!s1 || !s2)
 		return ;

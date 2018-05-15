@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/19 09:54:52 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 17:56:39 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 14:19:08 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef enum		e_bool
 {
 	false,
 	true
-} 					t_bool;
+}					t_bool;
 
 typedef struct		s_list
 {
@@ -58,9 +58,11 @@ int					ft_wchrlen(wchar_t c);
 int					ft_vector_init(t_vector *vector, size_t init_cap);
 void				ft_vector_append(t_vector *vector, char *newdata);
 void				ft_vector_resize(t_vector *vector, size_t min);
-void				ft_vector_nappend(t_vector *vector, char *newdata, size_t n);
+void				ft_vector_nappend(t_vector *vector, char *newdata,
+					size_t n);
 void				ft_vector_free(t_vector *vector);
-char				*ft_uimaxtoa_base(uintmax_t value, int8_t base, const char *str);
+char				*ft_uimaxtoa_base(uintmax_t value, int8_t base,
+					const char *str);
 int					ft_uintlen(uintmax_t n);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
@@ -101,7 +103,7 @@ int					ft_str_is_printable(char *str);
 int					ft_str_is_numeric(char *str);
 int					ft_str_is_lowercase(char *str);
 int					ft_str_is_alpha(char *str);
-char 				*ft_strfill(char *s, char c, size_t n);
+char				*ft_strfill(char *s, char c, size_t n);
 void				*ft_realloc(void *ptr, size_t src_size, size_t new_size);
 void				*ft_recalloc(void *ptr, size_t src_size, size_t new_size);
 void				ft_putstr(char const *str);
@@ -134,7 +136,7 @@ int					ft_isascii(int c);
 int					ft_isalpha(int c);
 int					ft_isalnum(int c);
 int					ft_intlen(intmax_t n);
-void    			ft_insert_str(char **s1, char *s2);
+void				ft_insert_str(char **s1, char *s2);
 char				*ft_imaxtoa(intmax_t value);
 void				ft_bzero(void *s, size_t n);
 int					ft_atoi(const char *str);

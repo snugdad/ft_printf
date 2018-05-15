@@ -6,13 +6,13 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 13:40:49 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 19:47:59 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 13:35:16 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void    handle_hexadec(t_vector *vector, t_arg *inf, va_list ap)
+void	handle_hexadec(t_vector *vector, t_arg *inf, va_list ap)
 {
 	uintmax_t	hex;
 	char		*s;
@@ -28,7 +28,7 @@ void    handle_hexadec(t_vector *vector, t_arg *inf, va_list ap)
 	free(s);
 }
 
-void		handle_unsigned(t_vector *vector, t_arg *inf, va_list ap)
+void	handle_unsigned(t_vector *vector, t_arg *inf, va_list ap)
 {
 	uintmax_t	uns;
 	char		*s;
@@ -42,7 +42,7 @@ void		handle_unsigned(t_vector *vector, t_arg *inf, va_list ap)
 	free(s);
 }
 
-void		handle_octal(t_vector *vector, t_arg *inf, va_list ap)
+void	handle_octal(t_vector *vector, t_arg *inf, va_list ap)
 {
 	uintmax_t	oct;
 	char		*s;
@@ -56,7 +56,7 @@ void		handle_octal(t_vector *vector, t_arg *inf, va_list ap)
 	free(s);
 }
 
-void    handle_bin(t_vector *vector, t_arg *inf, va_list ap)
+void	handle_bin(t_vector *vector, t_arg *inf, va_list ap)
 {
 	uintmax_t	bin;
 	char		*s;

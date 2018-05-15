@@ -6,17 +6,17 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 14:50:48 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/04 16:23:03 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 14:25:31 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_str_toupper(char *s)
+void	ft_str_toupper(char *s)
 {
-    while(*s)
-    {
-        *s = IS_LOWER(*s) ? *s - 32 : *s;
-        s++;
-    }
+	while (*s)
+	{
+		*s = IS_LOWER(*s) ? *s - 32 : *s;
+		s++;
+	}
 }

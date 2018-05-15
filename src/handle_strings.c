@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 14:29:51 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 19:39:30 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 13:35:47 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	handle_strings(t_vector *vector, t_arg *inf, va_list ap)
 	}
 	ctemp = va_arg(ap, char *);
 	s = !ctemp ? ft_null_str(inf) : ft_strdup(ctemp);
-	if(!(inf->prec == -1 || (int)ft_strlen(s) <= inf->prec))
+	if (!(inf->prec == -1 || (int)ft_strlen(s) <= inf->prec))
 		s[inf->prec] = '\0';
 	add_padding(inf, &s);
 	ft_vector_append(vector, s);

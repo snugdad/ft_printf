@@ -6,13 +6,13 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 15:37:12 by egoodale          #+#    #+#             */
-/*   Updated: 2018/04/25 18:17:41 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 14:24:30 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_putnbr_unsigned(uintmax_t nb)
+void	ft_putnbr_unsigned(uintmax_t nb)
 {
 	if (nb == ULLONG_MAX)
 		ft_putstr("18446744073709551616");

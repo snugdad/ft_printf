@@ -6,13 +6,13 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/22 16:30:48 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 19:20:29 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 13:22:40 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-intmax_t get_len_signed(char length, va_list ap)
+intmax_t	get_len_signed(char length, va_list ap)
 {
 	if (length == hh)
 		return ((signed char)va_arg(ap, int));
@@ -29,16 +29,16 @@ intmax_t get_len_signed(char length, va_list ap)
 	return (va_arg(ap, int));
 }
 
-void	handle_integer(t_vector *vector, t_arg *inf, va_list ap)
+void		handle_integer(t_vector *vector, t_arg *inf, va_list ap)
 {
-	intmax_t nb;
-	char *s;
+	intmax_t	nb;
+	char		*s;
 
 	inf->length = inf->spec == 'D' ? l : inf->length;
 	inf->spec = inf->spec == 'i' || inf->spec == 'D' ? 'd' : inf->spec;
 	nb = get_len_signed(inf->length, ap);
-	s =	ft_imaxtoa(nb);
-	if(inf->prec != -1 && inf->flags & Z)
+	s = ft_imaxtoa(nb);
+	if (inf->prec != -1 && inf->flags & Z)
 		inf->flags ^= Z;
 	if (inf->prec == 0 && !ft_strcmp("0", s))
 		*s = '\0';
@@ -51,6 +51,4 @@ void	handle_integer(t_vector *vector, t_arg *inf, va_list ap)
 	add_padding(inf, &s);
 	ft_vector_append(vector, s);
 	free(s);
-	
 }
-

@@ -6,21 +6,21 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 12:51:19 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 13:16:26 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 14:03:05 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PF_COLORS_H
-#define PF_COLORS_H
+#	ifndef PF_COLORS_H
+#	define PF_COLORS_H
 
-typedef struct  s_kwcolor
+typedef struct	s_kwcolor
 {
-    char *kw_name;
-    char *code;
-}               t_kwcolor;
+	char		*kw_name;
+	char		*code;
+}				t_kwcolor;
 
-t_kwcolor   g_colortab[] = {
-   	{"{red}", "\033[31m"},
+t_kwcolor g_colortab[] = {
+	{"{red}", "\033[31m"},
 	{"{bred}", "\033[31;1m"},
 	{"{green}", "\033[32m"},
 	{"{bgreen}", "\033[32;1m"},
@@ -55,4 +55,4 @@ t_kwcolor   g_colortab[] = {
 	{"{eoc}", "\033[0m"}
 };
 
-#endif // !1
+#	endif

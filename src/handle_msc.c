@@ -6,7 +6,7 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 17:51:02 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 19:10:47 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 13:19:56 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ intmax_t	*ft_printf_n_len(t_arg *inf, va_list ap)
 	return ((intmax_t *)va_arg(ap, int *));
 }
 
-void    handle_pos(t_vector *vector, t_arg *inf, va_list ap)
+void		handle_pos(t_vector *vector, t_arg *inf, va_list ap)
 {
 	intmax_t	*i;
 	int			tmp;
@@ -40,8 +40,7 @@ void    handle_pos(t_vector *vector, t_arg *inf, va_list ap)
 	*i = (intmax_t)tmp;
 }
 
-
-void    handle_percent(t_vector *vector, t_arg *inf, va_list ap)
+void		handle_percent(t_vector *vector, t_arg *inf, va_list ap)
 {
 	char *str;
 
@@ -53,15 +52,16 @@ void    handle_percent(t_vector *vector, t_arg *inf, va_list ap)
 	free(str);
 }
 
-int		handle_color(t_vector *vector, t_arg *inf, char **format)
+int			handle_color(t_vector *vector, t_arg *inf, char **format)
 {
 	int i;
 
 	i = -1;
 	ft_vector_nappend(vector, *format, inf->rc);
 	*format += inf->rc;
-	while(++i < 33)
-		if (ft_strnstr(*format, g_colortab[i].kw_name, ft_strlen(g_colortab[i].kw_name)))
+	while (++i < 33)
+		if (ft_strnstr(*format, g_colortab[i].kw_name,
+					ft_strlen(g_colortab[i].kw_name)))
 		{
 			ft_vector_append(vector, g_colortab[i].code);
 			*format += ft_strlen(g_colortab[i].kw_name);

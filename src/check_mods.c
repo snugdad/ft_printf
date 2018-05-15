@@ -6,13 +6,13 @@
 /*   By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:04:21 by egoodale          #+#    #+#             */
-/*   Updated: 2018/05/10 18:59:20 by egoodale         ###   ########.fr       */
+/*   Updated: 2018/05/15 13:26:57 by egoodale         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void   get_flags(char **format, t_arg *inf)
+void	get_flags(char **format, t_arg *inf)
 {
 	const char	flags[] = "-+ 0#";
 	size_t		i;
@@ -27,7 +27,7 @@ void   get_flags(char **format, t_arg *inf)
 	}
 }
 
-void   get_lngth(char **format, t_arg *inf)
+void	get_lngth(char **format, t_arg *inf)
 {
 	const char	lengths[] = "hhlljz";
 	int			i;
@@ -38,7 +38,7 @@ void   get_lngth(char **format, t_arg *inf)
 		i = ft_strzchr(lengths, *(*format + inf->rc));
 		if (i == 0)
 		{
-			if (*(*format + (inf->rc + 1)) == 'h') 
+			if (*(*format + (inf->rc + 1)) == 'h')
 				++inf->rc;
 			else
 				i = 1;

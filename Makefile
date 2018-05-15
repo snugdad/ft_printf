@@ -6,7 +6,7 @@
 #    By: egoodale <egoodale@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/26 19:11:26 by egoodale          #+#    #+#              #
-#    Updated: 2018/05/10 20:11:51 by egoodale         ###   ########.fr        #
+#    Updated: 2018/05/15 14:50:50 by egoodale         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,7 +119,7 @@ PRINTF_COMPILED =	check_mods.o\
 COMPILED =			$(FT_COMPILED) $(PRINTF_COMPILED)
 
 all: $(NAME)
-	@mv *.o obj
+
 
 $(NAME): $(COMPILED)
 	@ar rc $(NAME) $(COMPILED)
